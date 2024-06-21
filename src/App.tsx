@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <TaskInput addNewTask={addNewTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }
