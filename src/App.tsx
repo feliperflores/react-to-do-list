@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import TaskInput from './TaskInput';
-import TaskList from './TaskList';
+import TaskList from './TaskList/TaskList';
 
 function App() {
   const [tasks, setTasks] = useState<string[]>([]);
