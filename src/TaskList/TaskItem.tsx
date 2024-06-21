@@ -1,19 +1,19 @@
+import { Task } from '../App';
 import DeleteIcon from './trash.svg';
 
 type TaskProps = {
-  task: string
-  id: number
-  removeTask: (index: number) => void
+  task: Task
+  onRemoveTask: () => void
 }
 
-function TaskItem({id, task, removeTask}: TaskProps) {
+function TaskItem({task, onRemoveTask}: TaskProps) {
   return (
     <li
       className='flex justify-between border-black border-2 rounded grow m-1 p-1 pl-2 w-full hover:bg-gray-200 hover:-translate-y-px hover:cursor-pointer'
     >
-      {task}
+      {task.name}
       <img
-        onClick={() => removeTask(id)}
+        onClick={() => onRemoveTask()}
         src={DeleteIcon}
         alt="Delete Item"
         height={20}

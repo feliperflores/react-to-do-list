@@ -1,18 +1,24 @@
+import { Task } from '../App';
 import TaskItem from './TaskItem';
 
 type TaskProps = {
-  tasks: string[]
-  setTasks: (tasks: string[]) => void
+  tasks: Task[]
+  setTasks: (tasks: Task[]) => void
 }
 
 function TaskList({tasks, setTasks}: TaskProps) {
-  const removeTask = (index: number) => {
-    setTasks(tasks.filter((task, i) => i !== index));
+  const onRemoveTask = (timestamp: number) => {
+    setTasks(tasks.filter((task) => task.timestamp !== timestamp));
   }
 
   return (
     <ul className='flex flex-wrap m-3'>
-      {tasks.map((task, index) => <TaskItem key={index} id={index} task={task} removeTask={removeTask} />)}
+      {tasks.map((task, index) =>
+        <TaskItem
+          key={index}
+          task={task}
+          onRemoveTask={() => onRemoveTask(task.timestamp)}
+      />)}
     </ul>
   );
 }
