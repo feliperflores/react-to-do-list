@@ -4,7 +4,9 @@ import TaskList from './TaskList';
 
 function App() {
   const [tasks, setTasks] = useState<string[]>([]);
-  const addNewTask = (newTask: string) => setTasks([newTask, ...tasks]);
+  const addNewTask = (newTask: string) => {
+    setTasks([newTask, ...tasks]);
+  };
 
   return (
     <div>

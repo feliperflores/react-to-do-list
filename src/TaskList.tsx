@@ -1,13 +1,13 @@
-import Task from './Task';
+import TaskItem from './TaskItem';
 
-type TaskListProps = {
+type TaskProps = {
   tasks: string[]
 }
 
-function TaskList({tasks}: TaskListProps) {
+function TaskList({tasks}: TaskProps) {
   return (
     <ul className='flex flex-wrap m-3'>
-      {tasks.map((task, index) => <Task id={index} task={task} />)}
+      {tasks.map((task, index) => <TaskItem key={index} task={task} />)}
     </ul>
   );
 }
