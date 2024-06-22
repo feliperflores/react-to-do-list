@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 import { Task } from "../App";
 import TrashIcon from "./TrashIcon";
 import { animateDeletion } from "./animateDeletion";
@@ -14,7 +14,7 @@ function TaskItem({ task, onRemoveTask }: TaskProps) {
     if (!listItem) {
       return;
     }
-    animateDeletion(listItem, onRemoveTask).addEventListener("finish", () => {
+    animateDeletion(listItem).addEventListener("finish", () => {
       onRemoveTask();
     });
   };
