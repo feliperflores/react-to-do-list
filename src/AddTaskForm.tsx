@@ -12,7 +12,7 @@ function AddTaskForm({onAddNewTask}: AddTaskFormProps) {
     const name = data.get('name');
 
     if (name) {
-      onAddNewTask({timestamp: new Date().getTime(), name: name.toString()});
+      onAddNewTask({timestamp: Date.now(), name: name.toString()});
     }
   }
 
