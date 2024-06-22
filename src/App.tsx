@@ -14,7 +14,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="bg-violet-800">
       <AddTaskForm onAddNewTask={addNewTask} />
       <TaskList tasks={tasks} setTasks={setTasks} />
     </div>
