@@ -13,6 +13,7 @@ function AddTaskForm({onAddNewTask}: AddTaskFormProps) {
 
     if (name) {
       onAddNewTask({timestamp: Date.now(), name: name.toString()});
+      event.currentTarget.reset();
     }
   }
 
@@ -24,11 +25,12 @@ function AddTaskForm({onAddNewTask}: AddTaskFormProps) {
         name="name"
         required
         maxLength={120}
+        autoComplete="off"
         placeholder='Task name'
-        className='m-5 border-2 border-black rounded p-1 pl-2 w-96'/>
+        className='m-5 border-2 focus:bg-violet-600 border-black rounded p-1 pl-2 w-96 bg-violet-500 placeholder:text-gray-800 '/>
       <button
         type='submit'
-        className='m-5 bg-gray-400 p-2 rounded hover:bg-gray-700'
+        className='m-5 bg-violet-500 border-2 border-black rounded p-2 hover:bg-violet-600'
       >Add Task</button>
     </form>
   );
