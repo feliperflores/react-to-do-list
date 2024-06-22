@@ -1,18 +1,35 @@
-import { Task } from '../App';
-import TrashIcon from './TrashIcon';
+import { useRef } from "react";
+import { Task } from "../App";
+import TrashIcon from "./TrashIcon";
+import { animateDeletion } from "./animateDeletion";
 
 type TaskProps = {
-  task: Task
-  onRemoveTask: () => void
-}
+  task: Task;
+  onRemoveTask: () => void;
+};
 
-function TaskItem({task, onRemoveTask}: TaskProps) {
+function TaskItem({ task, onRemoveTask }: TaskProps) {
+  const listItem = useRef<HTMLLIElement>(null);
+  const onRemoveTaskWrapper = (listItem: HTMLLIElement | null) => {
+    if (!listItem) {
+      return;
+    }
+    animateDeletion(listItem, onRemoveTask).addEventListener("finish", () => {
+      onRemoveTask();
+    });
+  };
+
   return (
     <li
-      className='flex justify-between border-black border-2 rounded grow m-1 p-1 pl-2 w-full bg-violet-500 hover:bg-violet-600 hover:-translate-y-px hover:cursor-pointer'
+      ref={listItem}
+      className="flex justify-between border-black border-2 rounded grow m-1 p-1 pl-2 w-full bg-violet-500 hover:bg-violet-600 hover:-translate-y-px hover:cursor-pointer"
     >
       {task.name}
-      <TrashIcon height={20} width={20} onClick={onRemoveTask}/>
+      <TrashIcon
+        height={20}
+        width={20}
+        onClick={() => onRemoveTaskWrapper(listItem.current)}
+      />
     </li>
   );
 }

@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import TaskList from './TaskList/TaskList';
-import AddTaskForm from './AddTaskForm';
+import { useState } from "react";
+import TaskList from "./TaskList/TaskList";
+import AddTaskForm from "./AddTaskForm";
 
 export type Task = {
-  name: string
-  timestamp: number
-}
+  name: string;
+  timestamp: number;
+};
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -14,7 +14,7 @@ function App() {
   };
 
   return (
-    <div className='h-full bg-violet-800'>
+    <div>
       <AddTaskForm onAddNewTask={addNewTask} />
       <TaskList tasks={tasks} setTasks={setTasks} />
     </div>
