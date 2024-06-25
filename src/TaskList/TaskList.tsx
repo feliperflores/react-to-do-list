@@ -1,4 +1,3 @@
-import { FormEvent } from "react";
 import { Task } from "../App";
 import TaskItem from "./TaskItem";
 

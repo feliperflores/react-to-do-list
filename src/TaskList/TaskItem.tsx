@@ -1,7 +1,8 @@
-import { FormEvent, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Task } from "../App";
 import TrashIcon from "./TrashIcon";
 import { animateDeletion } from "./animateDeletion";
+import { animateCreation } from "./animateCreation";
 
 type TaskProps = {
   task: Task;
@@ -10,6 +11,13 @@ type TaskProps = {
 
 function TaskItem({ task, onRemoveTask }: TaskProps) {
   const listItem = useRef<HTMLLIElement>(null);
+  useEffect(() => {
+    const addedItem = listItem.current?.parentElement;
+    if (!addedItem) return;
+
+    animateCreation(addedItem.firstChild as HTMLLIElement);
+  }, [listItem]);
+
   const onRemoveTaskWrapper = (listItem: HTMLLIElement | null) => {
     if (!listItem) {
       return;

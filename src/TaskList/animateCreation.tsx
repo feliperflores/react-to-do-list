@@ -1,11 +1,12 @@
-export function animateCreation(element: HTMLElement) {
+export function animateCreation(element?: HTMLElement) {
+  if (!element) return;
   return element.animate(
     [
       {
-        transform: "scale(1)",
+        transform: "scaleX(0)",
       },
       {
-        transform: "scale(0, 1)",
+        transform: "scaleX(1)",
       },
     ],
     {
