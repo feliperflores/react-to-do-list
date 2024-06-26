@@ -22,7 +22,6 @@ function AddTaskForm({ onAddNewTask }: AddTaskFormProps) {
       <input
         name="name"
         required
-        maxLength={120}
         autoComplete="off"
         placeholder="Task name"
         className="m-5 border-2 focus:bg-violet-600 border-black rounded p-1 pl-2 w-96 bg-violet-500 placeholder:text-gray-800 "

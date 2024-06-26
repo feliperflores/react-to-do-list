@@ -11,6 +11,7 @@ function TrashIcon({ width = 64, height = 64, onClick }: TrashIconProps) {
       viewBox="0 0 128 128"
       width={width}
       height={height}
+      className="min-h-5 min-w-5"
       onClick={() => onClick()}
     >
       <title>Trash Icon</title>
