@@ -11,6 +11,7 @@ type TaskProps = {
 
 function TaskItem({ task, onRemoveTask }: TaskProps) {
   const listItem = useRef<HTMLLIElement>(null);
+
   useEffect(() => {
     const addedItem = listItem.current?.parentElement;
     if (!addedItem) return;
@@ -34,14 +35,10 @@ function TaskItem({ task, onRemoveTask }: TaskProps) {
     >
       <div className="w-full flex items-center">
         <input
-          id="taskDone"
           type="checkbox"
-          className="peer size-3.5 appearance-none rounded-sm border border-slate-300 accent-purple-300 checked:appearance-auto"
+          className="min-w-3.5 min-h-3.5 peer size-3.5 appearance-none rounded-sm border border-slate-300 accent-purple-300 checked:appearance-auto"
         />
-        <label
-          htmlFor="taskDone"
-          className="break-all mx-2 peer-checked:line-through peer-checked:text-gray-600"
-        >
+        <label className="break-all mx-2 peer-checked:line-through peer-checked:text-gray-600">
           {task.name}
         </label>
       </div>
