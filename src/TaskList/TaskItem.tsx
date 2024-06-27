@@ -32,18 +32,24 @@ function TaskItem({ task, onRemoveTask }: TaskProps) {
       ref={listItem}
       className="flex items-center border-black border-2 rounded grow m-1 p-1 pl-2 w-full bg-violet-500 hover:bg-violet-600 hover:-translate-y-px hover:cursor-pointer"
     >
-      <input
-        type="checkbox"
-        className="peer size-3.5 appearance-none rounded-sm border border-slate-300 accent-purple-300 checked:appearance-auto"
-      />
-      <div className="w-full flex justify-between items-center">
-        <span className="break-all mx-2">{task.name}</span>
-        <TrashIcon
-          height={20}
-          width={20}
-          onClick={() => onRemoveTaskWrapper(listItem.current)}
+      <div className="w-full flex items-center">
+        <input
+          id="taskDone"
+          type="checkbox"
+          className="peer size-3.5 appearance-none rounded-sm border border-slate-300 accent-purple-300 checked:appearance-auto"
         />
+        <label
+          htmlFor="taskDone"
+          className="break-all mx-2 peer-checked:line-through peer-checked:text-gray-600"
+        >
+          {task.name}
+        </label>
       </div>
+      <TrashIcon
+        height={20}
+        width={20}
+        onClick={() => onRemoveTaskWrapper(listItem.current)}
+      />
     </li>
   );
 }
