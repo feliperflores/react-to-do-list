@@ -3,6 +3,7 @@ import { Task } from "../App";
 import TrashIcon from "./TrashIcon";
 import { animateDeletion } from "./animateDeletion";
 import { animateCreation } from "./animateCreation";
+import TaskCheckbox from "./TaskCheckbox";
 
 type TaskProps = {
   task: Task;
@@ -33,15 +34,7 @@ function TaskItem({ task, onRemoveTask }: TaskProps) {
       ref={listItem}
       className="flex items-center border-black border-2 rounded grow m-1 p-1 pl-2 w-full bg-violet-500 hover:bg-violet-600 hover:-translate-y-px hover:cursor-pointer"
     >
-      <div className="w-full flex items-center">
-        <input
-          type="checkbox"
-          className="min-w-3.5 min-h-3.5 peer size-3.5 appearance-none rounded-sm border border-slate-300 accent-purple-300 checked:appearance-auto"
-        />
-        <label className="break-all mx-2 peer-checked:line-through peer-checked:text-gray-600">
-          {task.name}
-        </label>
-      </div>
+      <TaskCheckbox name={task.name} />
       <TrashIcon
         height={20}
         width={20}
