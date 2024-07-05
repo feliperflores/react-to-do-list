@@ -20,11 +20,10 @@ function TaskItem({ task, onRemoveTask }: TaskProps) {
     animateCreation(addedItem.firstChild as HTMLLIElement);
   }, [listItem]);
 
-  const onRemoveTaskWrapper = (listItem: HTMLLIElement | null) => {
-    if (!listItem) {
-      return;
-    }
-    animateDeletion(listItem).addEventListener("finish", () => {
+  const onRemoveTaskWrapper = () => {
+    if (!listItem.current) return;
+
+    animateDeletion(listItem.current).addEventListener("finish", () => {
       onRemoveTask();
     });
   };
@@ -35,11 +34,7 @@ function TaskItem({ task, onRemoveTask }: TaskProps) {
       className="flex items-center border-black border-2 rounded grow m-1 p-1 pl-2 w-full bg-violet-500 hover:bg-violet-600 hover:-translate-y-px hover:cursor-pointer"
     >
       <TaskCheckbox name={task.name} />
-      <TrashIcon
-        height={20}
-        width={20}
-        onClick={() => onRemoveTaskWrapper(listItem.current)}
-      />
+      <TrashIcon height={20} width={20} onClick={() => onRemoveTaskWrapper()} />
     </li>
   );
 }
