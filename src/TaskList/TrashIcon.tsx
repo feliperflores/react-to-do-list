@@ -1,17 +1,15 @@
 type TrashIconProps = {
-  width: number;
-  height: number;
   onClick: () => void;
 };
 
-function TrashIcon({ width = 64, height = 64, onClick }: TrashIconProps) {
+function TrashIcon({ onClick }: TrashIconProps) {
   return (
     <button className="p-1 hover:bg-gray-400 rounded" onClick={() => onClick()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 128 128"
-        width={width}
-        height={height}
+        width={20}
+        height={20}
         className="min-h-5 min-w-5"
         aria-labelledby="trashIconTitle"
       >
